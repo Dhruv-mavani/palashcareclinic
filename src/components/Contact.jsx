@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Send, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
+// Map 0-6 (Sun-Sat) to our schedule array indexes
+const today = new Date().getDay(); // 0 is Sunday, 1 is Monday...
+// This logic shifts JS (0-6) to match your array (Monday=0, Sunday=6)
+const todayScheduleIndex = today === 0 ? 6 : today - 1;
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,9 +48,7 @@ const Contact = () => {
     show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
   };
 
-  // Map 0-6 (Sun-Sat) to our schedule array indexes
-  const scheduleMapping = { 1: 0, 2: 0, 3: 1, 4: 2, 5: 3, 6: 4 };
-  const todayScheduleIndex = scheduleMapping[today] !== undefined ? scheduleMapping[today] : -1;
+
 
   return (
     <section id="contact" className="bg-slate-50 py-32 relative overflow-hidden font-sans">
@@ -143,6 +145,7 @@ const Contact = () => {
 
             {/* Hours Card with Dynamic Today Highlight */}
             <motion.div whileHover={{ y: -5 }} className="p-8 bg-slate-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden group border border-slate-800">
+              {/* Background Glow Effect */}
               <div className="absolute top-[-50%] right-[-10%] w-64 h-64 bg-primary/20 blur-[80px] rounded-full pointer-events-none transition-transform duration-700 group-hover:scale-150"></div>
 
               <div className="flex items-center justify-between mb-8 relative z-10">
@@ -152,10 +155,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white tracking-tight">Visit Hours</h3>
-                    <p className="text-slate-400 text-sm">Open 6 days a week</p>
+                    <p className="text-slate-400 text-sm italic">Open 6 days a week</p>
                   </div>
                 </div>
-                {todayScheduleIndex === -1 && <span className="px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-bold rounded-full border border-rose-500/30">Closed Today</span>}
+
+                {/* FIXED LOGIC: Sunday is index 6 in your list */}
+                {todayScheduleIndex === 6 && <span className="px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-bold rounded-full border border-rose-500/30">Closed Today</span>}
               </div>
 
               <div className="space-y-4 relative z-10">
@@ -170,11 +175,21 @@ const Contact = () => {
                 ].map((item, index) => {
                   const isToday = index === todayScheduleIndex;
                   return (
-                    <div key={item.day} className={`flex justify-between items-center text-sm border-b pb-3 last:border-0 last:pb-0 transition-all duration-300 ${isToday ? 'border-primary/40 scale-[1.02] transform origin-left' : 'border-white/5 hover:border-white/20'}`}>
+                    <div
+                      key={item.day}
+                      className={`flex justify-between items-center text-sm border-b pb-3 last:border-0 last:pb-0 transition-all duration-500 ${isToday
+                        ? 'border-primary/40 transform origin-left py-1'
+                        : 'border-white/5 opacity-50 hover:opacity-100'
+                        }`}
+                    >
                       <span className={`font-medium flex items-center gap-2 ${isToday ? 'text-primary font-bold' : 'text-slate-400'}`}>
-                        {item.day} {isToday && <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>}
+                        {item.day}
+                        {isToday && <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#991B1B]"></span>}
                       </span>
-                      <span className={`font-bold tracking-tight px-3 py-1 rounded-lg transition-colors ${isToday ? 'bg-primary/20 text-white border border-primary/30 shadow-[0_0_15px_rgba(153,27,27,0.2)]' : 'text-white bg-white/5'}`}>
+                      <span className={`font-bold tracking-tight px-4 py-1.5 rounded-xl transition-all duration-300 ${isToday
+                        ? 'bg-primary text-white shadow-[0_10px_20px_rgba(153,27,27,0.3)]'
+                        : 'text-white bg-white/5 border border-white/5'
+                        }`}>
                         {item.hours}
                       </span>
                     </div>
