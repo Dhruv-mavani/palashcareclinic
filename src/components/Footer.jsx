@@ -7,9 +7,14 @@ const Footer = () => {
       <div className="container">
         <div className="grid md:grid-cols-4 gap-16 mb-20">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-3 mb-8">
-              <img src="/palashcarecliniclogo.png" alt="Palash Care Clinic" className="h-20 w-auto object-contain" />
-              <div className="flex flex-col">
+            <div className="flex items-center gap-2 mb-8 min-w-0">
+              <img
+                src="/palashcarecliniclogo.png"
+                alt="Palash Care Clinic"
+                loading="lazy"
+                className="h-12 sm:h-16 md:h-20 w-auto max-w-[140px] sm:max-w-none object-contain"
+              />
+              <div className="flex flex-col min-w-0">
                 <span className="text-2xl font-bold tracking-tight text-main leading-none">Palash Care <span className="text-primary italic">Clinic</span></span>
                 <span className="text-xs uppercase tracking-[0.25em] text-muted font-bold mt-1">Premium Healthcare</span>
               </div>
@@ -18,18 +23,18 @@ const Footer = () => {
               Providing advanced Internal Medicine and Critical Care services to the community. Your recovery and long-term wellness are our absolute priority.
             </p>
             <div className="flex gap-4">
-              <a href="https://maps.app.goo.gl/TrN8m8YWbdSqkc9o8" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-muted hover:text-primary hover:border-primary transition-all bg-white shadow-sm">
+              <a href="https://maps.app.goo.gl/TrN8m8YWbdSqkc9o8" aria-label="Find us on Google Maps" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-muted hover:text-primary hover:border-primary transition-all bg-white shadow-sm">
                 <MapPin size={24} />
               </a>
 
-              <a href="https://www.instagram.com/clinicpalashcare" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-muted hover:text-primary hover:border-primary transition-all bg-white shadow-sm">
+              <a href="https://www.instagram.com/clinicpalashcare" aria-label="Follow us on Instagram" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-muted hover:text-primary hover:border-primary transition-all bg-white shadow-sm">
                 <Instagram size={24} />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="text-main font-bold mb-8 uppercase text-sm tracking-widest">Services</h4>
+            <h3 className="text-main font-bold mb-8 uppercase text-sm tracking-widest">Services</h3>
             <ul className="space-y-4">
               <li><a href="#services" className="text-muted hover:text-primary text-sm font-bold transition-all">Diabetes Management</a></li>
               <li><a href="#services" className="text-muted hover:text-primary text-sm font-bold transition-all">Hypertension Care</a></li>

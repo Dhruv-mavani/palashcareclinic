@@ -68,13 +68,13 @@ const Contact = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-32" style={{ marginBottom: "70px" }}
+          className="text-center mb-16 md:mb-32" style={{ marginBottom: "70px" }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] mb-6 shadow-sm border border-primary/20">
             <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
             Get In Touch
           </div>
-          <h2 className="text-5xl md:text-7xl font-extrabold mb-6 text-slate-900 leading-[1.1] tracking-tight">
+          <h2 className="text-4xl md:text-7xl font-extrabold mb-6 text-slate-900 leading-[1.1] tracking-tight">
             Let's Start Your <br />
             <span className="text-primary italic drop-shadow-sm">Recovery Journey.</span>
           </h2>
@@ -129,7 +129,7 @@ const Contact = () => {
                       {item.icon}
                     </div>
                     <div className="flex flex-col flex-grow text-left">
-                      <h4 className="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">{item.title}</h4>
+                      <h3 className="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">{item.title}</h3>
                       <p className="text-slate-900 font-extrabold text-xl leading-tight">{item.desc}</p>
                       <p className="text-slate-500 text-sm mt-1">{item.subDesc}</p>
                       <div className="flex items-center gap-1 mt-3 text-primary font-semibold text-sm opacity-100 md:opacity-0 md:-translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0 transition-all duration-300">
@@ -151,7 +151,7 @@ const Contact = () => {
                     <Clock size={24} />
                   </div>
                   <div>
-                    <h4 className="text-2xl font-bold text-white tracking-tight">Visit Hours</h4>
+                    <h3 className="text-2xl font-bold text-white tracking-tight">Visit Hours</h3>
                     <p className="text-slate-400 text-sm">Open 6 days a week</p>
                   </div>
                 </div>
@@ -189,7 +189,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-7 lg:mt-28 bg-white/80 backdrop-blur-xl p-8 md:p-12 lg:p-14 rounded-[3rem] shadow-2xl shadow-primary/5 border border-white"
+            className="lg:col-span-7 mt-0 lg:mt-28 bg-white/80 backdrop-blur-xl p-6 md:p-12 lg:p-14 rounded-[2.5rem] md:rounded-[3rem] shadow-2xl shadow-primary/5 border border-white"
           >
             <div className="mb-10">
               <h3 className="text-3xl md:text-4xl font-black mb-3 text-slate-900 tracking-tight">
@@ -261,6 +261,7 @@ const Contact = () => {
                   name="service"
                   defaultValue=""
                   required
+                  aria-label="Select the service you require"
                   className="block px-6 py-4 w-full text-slate-900 bg-slate-50 border-2 border-slate-100 rounded-2xl appearance-none focus:outline-none focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23991B1B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E')] bg-[length:12px] bg-[right_1.5rem_center] bg-no-repeat invalid:text-slate-400"
                 >
                   {/* This acts as the unselectable placeholder */}
@@ -327,7 +328,7 @@ const Contact = () => {
                 <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }} className="w-16 h-16 bg-primary/20 text-primary rounded-2xl flex items-center justify-center mb-8 border border-primary/30">
                   <MapPin size={32} />
                 </motion.div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Find Us In <br /><span className="text-primary italic">Vesu, Surat.</span></h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Find Us In <br /><span className="text-primary italic">Vesu, Surat.</span></h2>
                 <p className="text-slate-400 text-lg mb-8 leading-relaxed">Conveniently located with plenty of parking. We look forward to welcoming you to our modern facility.</p>
                 <a href="https://maps.app.goo.gl/hyt2fsHK5DPoQ7su7" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl py-4 px-8 w-fit flex items-center gap-3 transition-all duration-300 backdrop-blur-sm border border-white/10 group">
                   Get Directions <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />

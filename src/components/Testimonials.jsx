@@ -27,7 +27,7 @@ const Testimonials = () => {
   ]
 
   return (
-    <section id="reviews" className="relative py-32 overflow-hidden bg-soft">
+    <section id="reviews" className="relative py-20 sm:py-24 md:py-32 overflow-hidden bg-soft">
       {/* Subtle Background Glows */}
       <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] translate-y-1/3 pointer-events-none"></div>
@@ -39,6 +39,7 @@ const Testimonials = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02 }}
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-main mb-4 tracking-tight">
@@ -57,38 +58,39 @@ const Testimonials = () => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="glass-card-vibrant p-8 md:p-10 rounded-3xl flex flex-col h-full"
+              className="glass-card-vibrant p-6 sm:p-8 md:p-10 rounded-3xl flex flex-col h-full border border-white/40 bg-white/80 backdrop-blur-xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-6">
                 {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} size={18} className="text-accent fill-accent" />
+                  <Star key={i} size={16} className="text-accent fill-accent opacity-90" />
                 ))}
               </div>
 
               {/* Review Text */}
-              <p className="text-main font-medium text-lg md:text-xl leading-relaxed mb-8 flex-grow">
+              <p className="text-main/90 font-medium text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 flex-grow tracking-[0.01em]">
                 {review.review}
               </p>
 
               {/* Author Info with a subtle top border for separation */}
-              <div className="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-primary/10">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-lg shrink-0">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-auto pt-6 border-t border-primary/10">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-base sm:text-lg shrink-0">
                     {review.name[0]}
                   </div>
                   <div>
-                    <h4 className="font-bold text-main">{review.name}</h4>
-                    <span className="text-muted text-sm font-medium">Verified Patient</span>
+                    <h4 className="font-semibold text-main text-sm sm:text-base">{review.name}</h4>
+                    <span className="text-muted text-xs sm:text-sm font-medium opacity-80">Verified Patient</span>
                   </div>
                 </div>
-                <a 
-                  href="https://www.google.com/maps/place/Palash+Care+Clinic/@21.1408269,72.7800883,17z/data=!4m8!3m7!1s0x3be05273376a3b1f:0x489826cdf00b235b!8m2!3d21.1408219!4d72.7826632!9m1!1b1!16s%2Fg%2F11f2b5wndt?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D" 
+                <a
+                  href="https://www.google.com/maps/place/Palash+Care+Clinic/@21.1408269,72.7800883,17z/data=!4m8!3m7!1s0x3be05273376a3b1f:0x489826cdf00b235b!8m2!3d21.1408219!4d72.7826632!9m1!1b1!16s%2Fg%2F11f2b5wndt?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-primary/5 hover:bg-primary/10 text-primary text-sm font-black rounded-2xl transition-all border border-primary/20 hover:border-primary/40 flex items-center gap-3 whitespace-nowrap shadow-sm hover:shadow-md"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-primary/5 hover:bg-primary/10 text-primary text-sm font-semibold rounded-xl sm:rounded-2xl transition-all duration-300 border border-primary/20 hover:border-primary/40 shadow-sm hover:shadow-md hover:scale-[1.03] active:scale-[0.97]"
                 >
                   View on Maps <ExternalLink size={16} />
                 </a>

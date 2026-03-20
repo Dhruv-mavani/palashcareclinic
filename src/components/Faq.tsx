@@ -45,7 +45,7 @@ const FaqItem = ({ question, answer, isOpen, onClick }: {
                         }`}>
                         <HelpCircle size={20} />
                     </div>
-                    <span className={`font-bold text-lg tracking-tight ${isOpen ? 'text-slate-900' : 'text-slate-700'}`}>
+                    <span className={`font-bold text-base md:text-lg tracking-tight ${isOpen ? 'text-slate-900' : 'text-slate-700'}`}>
                         {question}
                     </span>
                 </div>
@@ -66,7 +66,7 @@ const FaqItem = ({ question, answer, isOpen, onClick }: {
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         className="overflow-hidden"
                     >
-                        <div className="p-8 pt-2 pb-6 text-slate-500 leading-relaxed text-lg ml-14">
+                        <div className="p-6 md:p-8 pt-2 pb-6 text-slate-500 leading-relaxed text-base md:text-lg ml-0 md:ml-14">
                             <div className="h-px w-12 bg-primary/10 mb-4"></div>
                             {answer}
                         </div>
@@ -97,7 +97,7 @@ const Faq = () => {
                         <Sparkles size={14} className="animate-pulse" /> FAQs
                     </motion.div>
 
-                    <h2 className="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
+                    <h2 className="text-3xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
                         Everything You<span className="text-primary"> Need to know.</span>
                     </h2>
 
@@ -127,7 +127,7 @@ const Faq = () => {
                 >
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 px-4">
                         <div className="text-left">
-                            <h4 className="text-white text-4xl font-bold mb-1 tracking-tight">Still have questions?</h4>
+                            <h4 className="text-white text-2xl md:text-4xl font-bold mb-1 tracking-tight">Still have questions?</h4>
                             <p className="text-slate-400 font-medium">Our friendly team is ready to help you.</p>
                         </div>
                         <a

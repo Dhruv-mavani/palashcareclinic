@@ -65,7 +65,10 @@ const Services = () => {
               <p className="text-muted mb-6 flex-grow">
                 {service.description}
               </p>
-              <a href="#contact" className="btn-primary w-half py-3 mb-4 text-sm mt-auto">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base mt-auto mb-4 btn-primary"
+              >
                 Book Appointment <ChevronRight size={16} />
               </a>
             </motion.div>

@@ -1,65 +1,118 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Star, Shield, Clock, User } from 'lucide-react'
+import { ArrowRight, Star, Shield, User, ChevronDown } from 'lucide-react'
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  }
+
   return (
-    <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden bg-[#F9FAFB]">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+      {/* Background Layer */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/90 via-accent/40 to-primary/90 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/40 to-slate-950/60 z-10" />
         <video
           src="/homepagevideo.mp4"
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
+          className="w-full h-full object-cover opacity-60"
+          autoPlay loop muted playsInline
         />
       </div>
 
-      <div className="container relative z-20 text-center flex justify-center">
+
+
+      {/* Main Content Container */}
+      <div className="container relative z-20 px-4 pt-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          /* THE FIX: flex-col and items-center forces all children to center */
+          className="flex flex-col items-center justify-center text-center max-w-6xl mx-auto"
         >
-          <h1 className="text-4xl md:text-7xl font-bold leading-tight mb-8 text-white max-w-5xl mx-auto drop-shadow-2xl" style={{ marginTop: '150px' }}>
-            WELCOME TO <br />
-            <span className="text-primary italic">PALASH CARE CLINIC</span>
-          </h1>
+          {/* 1. Top Label */}
+          <motion.div variants={itemVariants} className="mb-6">
+            <span className="px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white/70 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">
+              Surat's Premier Medical Care
+            </span>
+          </motion.div>
 
-          <p className="text-xl md:text-2xl italic text-white/100 mb-12 max-w-4xl mx-auto font-medium">
-            <strong>Dr. Hardik Patel (MD)</strong> provides advanced Internal Medicine and Critical Care services at <strong>Palash Care Clinic</strong>, Vesu. Dedicated to your emergency recovery and long-term wellness.
-          </p>
+          {/* 2. Main Headline */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl sm:text-7xl md:text-8xl font-light leading-[1.1] mb-8 text-white tracking-tighter"
+          >
+            <span className="block font-thin opacity-80 text-3xl md:text-5xl mb-2">Welcome to</span>
+            <span className="block font-serif italic bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              Palash Care Clinic
+            </span>
+          </motion.h1>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <a href="#contact" className="btn-primary text-lg">
-              Book Appointment
+          {/* 3. Subtext - Force center with w-full and text-center */}
+          <motion.p
+            variants={itemVariants}
+            className="text-center text-lg md:text-xl text-slate-300 mb-12 max-w-2xl w-full font-light leading-relaxed tracking-wide"
+          >
+            Experience the pinnacle of <span className="text-white font-medium">Internal Medicine</span> and <span className="text-white font-medium">Critical Care</span>. Led by Dr. Hardik Patel, we redefine wellness through precision and empathy.
+          </motion.p>
+
+          {/* 4. Centered Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-row sm:flex-row items-center justify-center gap-6 w-full"
+          >
+            <a
+              href="#contact"
+              className="btn-primary p-3 mb-4 group px-10 py-5 bg-white text-slate-950 font-bold rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-xl"
+            >
+              Book Appointment <ArrowRight size={18} />
             </a>
-            <a href="#contact" className="bg-white/10 backdrop-blur-lg border border-white/40 text-white hover:bg-transparent hover:text-primary px-4 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
-              Contact Us
-            </a>
-          </div>
 
-          <div className="pt-12 flex flex-wrap justify-center gap-8 text-white/90" style={{ marginTop: '25px' }}>
-            <div className="flex items-center gap-3 bg-white/10 px-5 py-2.5 rounded-2xl backdrop-blur-md border border-white/20">
-              <Star size={20} className="text-secondary fill-secondary" />
-              <span className="text-sm font-bold uppercase tracking-wider">100+ Patients Treated</span>
-            </div>
-            <div className="flex items-center gap-3 bg-white/10 px-5 py-2.5 rounded-2xl backdrop-blur-md border border-white/20">
-              <Shield size={20} className="text-secondary" />
-              <span className="text-sm font-bold uppercase tracking-wider">Critical Care Specialist</span>
-            </div>
-            <div className="flex items-center gap-3 bg-white/10 px-5 py-2.5 rounded-2xl backdrop-blur-md border border-white/20">
-              <User size={20} className="text-secondary" />
-              <span className="text-sm font-bold uppercase tracking-wider">MD Physician</span>
-            </div>
-          </div>
+            <a
+              href="#services"
+              className="btn-secondary p-3 mb-4 px-10 py-5 bg-transparent border border-white/20 text-white font-medium rounded-full hover:bg-white/5 transition-all duration-300"
+            >
+              Explore Services
+            </a>
+          </motion.div>
+
+          {/* 5. Stats Grid */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl"
+          >
+            {[
+              { icon: Star, text: "100+ Recovered Patients", label: "Excellence" },
+              { icon: Shield, text: "Critical Care Specialist", label: "Expertise" },
+              { icon: User, text: "MD Physician (Internal)", label: "Precision" },
+            ].map((stat, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center p-6 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-xl"
+              >
+                <stat.icon size={22} className="text-slate-400 mb-3" />
+                <span className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-1">{stat.label}</span>
+                <span className="text-sm font-semibold text-white/90">{stat.text}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
 
-
+      {/* Scroll Down */}
+      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-30">
+        <span className="text-[10px] uppercase tracking-[0.3em] text-white">Scroll</span>
+        <ChevronDown size={20} className="text-white animate-bounce" />
+      </div>
     </section>
   )
 }
