@@ -22,10 +22,6 @@ const faqs = [
     {
         question: "What should I bring for my first consultation?",
         answer: "Please bring your previous medical records, current prescriptions, latest blood report findings, and any relevant imaging (X-rays/CT scans) to help Dr. Patel provide a comprehensive evaluation."
-    },
-    {
-        question: "What should I bring for my first consultation?",
-        answer: "Please bring your previous medical records, current prescriptions, latest blood report findings, and any relevant imaging (X-rays/CT scans) to help Dr. Patel provide a comprehensive evaluation."
     }
 ];
 
